@@ -1,0 +1,28 @@
+<h1>User list</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <td>user id</td>
+      <td>username</td>
+      <td>email</td>
+      <td>display name</td>
+      <td>state</td>
+      <td>actions</td>
+    </tr>
+  </thead>
+  <tbody>
+  <?php foreach($this->users as $user): ?>
+    <tr>
+      <td><?php echo $user->getId();?></td>
+      <td><?php echo $user->getUsername();?></td>
+      <td><?php echo $user->getEmail();?></td>
+      <td><?php echo $user->getDisplayName();?></td>
+      <td><?php echo $user->getState();?></td>
+      <td>
+        <a href="<?php echo $this->url('admin/user/edit', array( 'user_id' => $user->getId() ));?>" class="btn btn-info btn-xs">edit</a>
+      </td>
+    </tr>
+  <?php endforeach; ?>
+  </tbody>
+<table>

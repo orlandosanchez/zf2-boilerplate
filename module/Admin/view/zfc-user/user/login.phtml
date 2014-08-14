@@ -1,0 +1,38 @@
+<h1><?php echo $this->translate('Sign In'); ?></h1>
+
+<?php
+$form = $this->loginForm;
+$form->prepare();
+$form->setAttribute('action', $this->url('zfcuser/login'));
+$form->setAttribute('method', 'post');
+?>
+
+<?php echo $this->form()->openTag($form) ?>
+
+<?php echo $this->formElementErrors($form->get('identity')) ?>
+
+<div class="row">
+  <div class="form-group col-md-3">
+    <?php echo $this->formLabel($form->get('identity')) ?>
+    <?php echo $this->formInput($form->get('identity')->setAttribute('class','form-control')) ?>
+  </div>
+</div>
+
+<div class="row">
+  <div class="form-group col-md-3">
+    <?php echo $this->formLabel($form->get('credential')) ?>
+    <?php echo $this->formInput($form->get('credential')->setAttribute('class','form-control')) ?>
+  </div>
+</div>
+
+<?php if ($this->redirect): ?>
+<input type="hidden" name="redirect" value="<?php echo $this->escapeHtml($this->redirect) ?>" />
+<?php endif ?>
+
+<?php echo $this->formButton($form->get('submit')->setAttribute('class', 'btn btn-info')) ?></dd>
+<?php echo $this->form()->closeTag() ?>
+
+<hr />
+<?php if ($this->enableRegistration) : ?>
+<?php echo $this->translate('Not registered?'); ?> <a href="<?php echo $this->url('zfcuser/register') . ($this->redirect ? '?redirect='.$this->redirect : '') ?>"><?php echo $this->translate('Sign up!'); ?></a>
+<?php endif; ?>

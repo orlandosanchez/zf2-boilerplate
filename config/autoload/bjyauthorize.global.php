@@ -31,23 +31,24 @@ return array(
 
             /* here, 'guest' and 'user are defined as top-level roles, with
              * 'admin' inheriting from user
-             */
+
             'BjyAuthorize\Provider\Role\Config' => array(
                 'guest' => array(),
                 'user'  => array('children' => array(
                     'admin' => array(),
                 )),
-            ),
-/*
+            ),*/
+
             // this will load roles from the user_role table in a database
             // format: user_role(role_id(varchar), parent(varchar))
             'BjyAuthorize\Provider\Role\ZendDb' => array(
                 'table'                 => 'user_role',
                 'identifier_field_name' => 'id',
-                'role_id_field'         => 'role_id',
+                'role_id_field'         => 'roleId',
                 'parent_role_field'     => 'parent_id',
             ),
 
+            /*
             // this will load roles from
             // the 'BjyAuthorize\Provider\Role\ObjectRepositoryProvider' service
             'BjyAuthorize\Provider\Role\ObjectRepositoryProvider' => array(
@@ -120,14 +121,19 @@ return array(
              * access to all routes unless they are specified here.
              */
             'BjyAuthorize\Guard\Route' => array(
-                array('route' => 'zfcuser', 'roles' => array('user')),
-                array('route' => 'zfcuser/logout', 'roles' => array('user')),
-                array('route' => 'zfcuser/login', 'roles' => array('guest')),
-                array('route' => 'zfcuser/register', 'roles' => array('guest')),
+                array('route' => 'zfcuser',             'roles' => array('user')),
+                array('route' => 'zfcuser/logout',      'roles' => array('user')),
+                array('route' => 'zfcuser/login',       'roles' => array('guest')),
+                array('route' => 'zfcuser/register',    'roles' => array('guest')),
                 // Below is the default index action used by the ZendSkeletonApplication
-                array('route' => 'home', 'roles' => array('guest', 'user')),
+                array('route' => 'home',                'roles' => array('guest', 'user')),
+
+                array('route' => 'admin',               'roles' => array('user')),
+                array('route' => 'admin/user',          'roles' => array('user')),
+                array('route' => 'admin/user/list',     'roles' => array('user')),
+                array('route' => 'admin/user/edit',     'roles' => array('user')),
+                array('route' => 'admin/user/redirect', 'roles' => array('user', 'guest'))
             ),
         ),
     ),
 );
-
