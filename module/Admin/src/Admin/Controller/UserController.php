@@ -38,10 +38,14 @@ class UserController extends AbstractActionController
     }
 
 	public function editAction() {
-		$user_id = $this->params()->fromRoute('user_id');
-        $user = $this->getUserTable()->getUser($user_id);
+		$user_id 	= $this->params()->fromRoute('user_id');
+        $user 		= $this->getUserTable()->getUser($user_id);
+		
+		$form 		= new \Admin\Form\UserForm();
+		$form->setData($user->toArray());
+		
 		return new ViewModel(array(
-			'user' => $user
+			'form' => $form
 		));
 	}
 

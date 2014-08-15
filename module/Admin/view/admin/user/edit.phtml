@@ -1,1 +1,38 @@
-<?php var_dump($this->user);?>
+<?=$this->form()->openTag($form);?>
+<?=$this->formHidden($form->get('user_id'));?>
+<div class="row">
+    <div class="form-group col-md-3">
+      	<label for="email">State</label>
+		<?=$this->formRow($form->get('state')->setAttribute('class', 'form-control'));?>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-3">
+      	<label for="email">Username</label>
+		<?=$this->formRow($form->get('username')->setAttribute('class', 'form-control'));?>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-3">
+      	<label for="email">Display Name</label>
+		<?=$this->formRow($form->get('display_name')->setAttribute('class', 'form-control'));?>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-3">
+      	<label for="email">Email</label>
+		<?=$this->formRow($form->get('email')->setAttribute('class', 'form-control'));?>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-3">
+      	<label for="email">Password</label>
+		<?=$this->formRow($form->get('password')->setAttribute('class', 'form-control'));?>
+    </div>
+</div>
+
+<div class="row col-md-3">
+	<button type="submit" class="btn btn-default">Submit</button>
+</div>
+<div style="clear: both"></div>
+<?=$this->form()->closeTag();?>

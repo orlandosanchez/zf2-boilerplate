@@ -171,8 +171,20 @@ class User implements \ZfcUser\Entity\UserInterface
       $this->setId((isset($data['user_id'])) ? $data['user_id'] : null);
       $this->setUsername((isset($data['username'])) ? $data['username'] : null);
       $this->setEmail((isset($data['email'])) ? $data['email'] : null);
-      $this->setDisplayName((isset($data['displayName'])) ? $data['displayName'] : null);
+      $this->setDisplayName((isset($data['display_name'])) ? $data['display_name'] : null);
       $this->setState((isset($data['state'])) ? $data['state'] : null);
       $this->setPassword((isset($data['password'])) ? $data['password'] : null);
     }
+
+	public function toArray()
+	{
+		return array(
+			'user_id' 		=> $this->getId(),
+			'username' 		=> $this->getUsername(),
+			'display_name' 	=> $this->getDisplayName(),
+			'email'			=> $this->getEmail(),
+			'password' 		=> $this->getPassword(),
+			'state'			=> $this->getState()
+		);
+	}
 }

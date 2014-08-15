@@ -131,10 +131,13 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'admin/index/index' => __DIR__ . '/../view/admin/index/index.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            'layout/layout' 		=> __DIR__ . '/../view/layout/layout.phtml',
+			'layout/menu/dropdown'	=> __DIR__ . '/../view/layout/userMenuDropdown.phtml',
+			'layout/admin/menu' 	=> __DIR__ . '/../view/layout/adminMenu.phtml',
+            'admin/index/index' 	=> __DIR__ . '/../view/admin/index/index.phtml',
+            'error/404'             => __DIR__ . '/../view/error/404.phtml',
+            'error/index'           => __DIR__ . '/../view/error/index.phtml',
+
         ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
